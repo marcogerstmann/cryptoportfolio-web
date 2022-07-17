@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { CoinStats } from '../../../models/CoinStats';
-import { MoneyValue } from '../../../models/MoneyValue';
+import { getMoneyString } from '../../../util/MoneyUtil';
 import './coin-statistics.component.scss';
 
 interface CoinStatisticsProps {
@@ -8,11 +8,16 @@ interface CoinStatisticsProps {
 }
 
 export const CoinStatisticsComponent: FunctionComponent<CoinStatisticsProps> = props => {
-  const getMoneyString = (moneyValue: MoneyValue): string => `${moneyValue.amount.toFixed(2)} ${moneyValue.currency}`;
+  const getPositiveNegativeClassName = (value: number) => {
+    if (value === 0) {
+      return '';
+    }
+    return value > 0 ? 'positive' : 'negative';
+  };
 
   return (
     <>
-      <table>
+      <table className={'coin-stats'}>
         <thead>
           <tr>
             <th>Coin Code</th>
@@ -34,8 +39,12 @@ export const CoinStatisticsComponent: FunctionComponent<CoinStatisticsProps> = p
               <td>{getMoneyString(coinStat.currentMarketPrice)}</td>
               <td>{getMoneyString(coinStat.averageInvestedPrice)}</td>
               <td>{getMoneyString(coinStat.currentValue)}</td>
-              <td>{getMoneyString(coinStat.differenceAbsolute)}</td>
-              <td>{coinStat.differencePercentage.toFixed(2)}%</td>
+              <td className={getPositiveNegativeClassName(coinStat.differenceAbsolute.amount)}>
+                {getMoneyString(coinStat.differenceAbsolute)}
+              </td>
+              <td className={getPositiveNegativeClassName(coinStat.differencePercentage)}>
+                {coinStat.differencePercentage.toFixed(2)}%
+              </td>
             </tr>
           ))}
         </tbody>
