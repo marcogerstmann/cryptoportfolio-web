@@ -1,10 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import './app.component.scss';
+import Statistics from '../Statistics';
 
-export const AppComponent: FunctionComponent = () => {
-  return (
-    <div className="App">
-      This is going to be a powerful crypto portfolio app
-    </div>
-  );
-};
+export const AppComponent: FunctionComponent = () => <Statistics></Statistics>;
