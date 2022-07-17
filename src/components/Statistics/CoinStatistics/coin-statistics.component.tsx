@@ -1,8 +1,17 @@
 import { FunctionComponent } from 'react';
 import './coin-statistics.component.scss';
+import { CoinStats } from '../../../models/CoinStats';
 
-export const CoinStatisticsComponent: FunctionComponent = () => {
+interface CoinStatisticsProps {
+  coinStats: CoinStats[];
+}
+
+export const CoinStatisticsComponent: FunctionComponent<CoinStatisticsProps> = props => {
   return (
-    <div>The coin statistics will be shown here</div>
+    <>
+      {props.coinStats.map(coinStat => (
+        <div key={coinStat.coinCode}>{coinStat.coinName}</div>
+      ))}
+    </>
   );
 };

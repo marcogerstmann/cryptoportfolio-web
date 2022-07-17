@@ -1,8 +1,22 @@
 import { FunctionComponent } from 'react';
 import './overall-statistics.component.scss';
+import { OverallStats } from '../../../models/OverallStats';
 
-export const OverallStatisticsComponent: FunctionComponent = () => {
+interface OverallStatisticsProps {
+  overallStats: OverallStats;
+}
+
+export const OverallStatisticsComponent: FunctionComponent<OverallStatisticsProps> = props => {
   return (
-    <div>The overall statistics will be shown here</div>
+    <>
+      <div>
+        Cost Basis: {props.overallStats.costBasis?.amount}
+        {props.overallStats.costBasis?.currency}
+      </div>
+      <div>
+        Current Portfolio Value: {props.overallStats.currentPortfolioValue?.amount}
+        {props.overallStats.currentPortfolioValue?.currency}
+      </div>
+    </>
   );
 };
