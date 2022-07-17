@@ -17,6 +17,13 @@ export const OverallStatisticsComponent: FunctionComponent<OverallStatisticsProp
         Current Portfolio Value: {props.overallStats.currentPortfolioValue?.amount}
         {props.overallStats.currentPortfolioValue?.currency}
       </div>
+      <div>
+        Difference (absolute): {props.overallStats.differenceAbsolute?.amount}
+        {props.overallStats.differenceAbsolute?.currency}
+      </div>
+      <div>
+        Difference (%): {props.overallStats.differencePercentage}%
+      </div>
     </>
   );
 };
