@@ -1,5 +1,4 @@
 import { FunctionComponent } from 'react';
-import './overall-statistics.component.scss';
 import { OverallStats } from '../../../models/OverallStats';
 
 interface OverallStatisticsProps {

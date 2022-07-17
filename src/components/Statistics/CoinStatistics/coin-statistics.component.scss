@@ -1,0 +1,11 @@
+th, td {
+  padding: 0 12px;
+}
+
+td {
+  text-align: right;
+}
+
+tr:nth-of-type(even) {
+  background: lightblue;
+}
